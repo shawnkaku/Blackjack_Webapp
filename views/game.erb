@@ -1,0 +1,22 @@
+<h1>Blackjack</h1>
+<div class="well">
+  <h4>
+    <%=  "#{@player.name}'s point is : #{calculate_point(@player.hold_cards)}" %><br/>
+    cards:
+  </h4>
+  <% @player.hold_cards.each do |e| %>
+    <%= "#{card_img(e)}" %>
+  <% end %>
+</div>
+<br/>
+<div class="well">
+  <h4>
+    <%=  "Dealer's point is : #{calculate_point(@dealer.hold_cards)}" %><br/>
+    cards:
+  </h4>
+  <% @dealer.hold_cards.each do |e| %>
+    <%= "#{card_img(e)}" %>
+  <% end %>
+</div>
+
+
