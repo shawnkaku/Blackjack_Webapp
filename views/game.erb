@@ -1,12 +1,20 @@
 <h1>Blackjack</h1>
 <div class="well">
   <h4>
-    <%=  "#{@player.name}'s point is : #{calculate_point(@player.hold_cards)}" %><br/>
-    cards:
+    <%=  "#{@player.name}'s cards:" %><br/>
+    
   </h4>
   <% @player.hold_cards.each do |e| %>
     <%= "#{card_img(e)}" %>
   <% end %>
+  <br />
+  What would you like to do?<%= "#{@player.name} has #{calculate_point(@player.hold_cards)}" %>
+  <form action='/game/player/hit' method='post'>
+    <input type='submit' class='btn' value='Hit' />
+  </form>
+  <form action='/game/player/stay' method='post'>
+    <input type='submit' class='btn' value='Stay' />
+  </form>
 </div>
 <br/>
 <div class="well">

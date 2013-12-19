@@ -1,6 +1,7 @@
 require 'rubygems'
 require 'sinatra'
-# require 'pry'
+require 'pry'
+
 require_relative 'classes/player'
 require_relative 'classes/dealer'
 require_relative 'classes/deck'
@@ -12,9 +13,10 @@ MAX_POINT = 21
 
 helpers do
   def calculate_point(arr_card)
+    #binding.pry
     points = 0
     arr_card.each do |card|
-      if card.suit == "A"
+      if card.face_value == "A"
         points += 11
         points -= 10 if points > MAX_POINT
       elsif card.face_value.to_i == 0
@@ -46,6 +48,22 @@ helpers do
 
     "<img src='/images/cards/#{suit}_#{value}.jpg' class='card_image'>"
   end
+
+  def reset_all
+    session[:game] = nil
+  end
+
+  def restore
+    if session[:game]
+      #@bj = Blackjack.new(3, session[:player_name])
+
+      @game = session[:game]
+      @players = @game.players
+      @dealer = @game.dealer
+      @deck = @game.deck
+      #@dealer_cards = @dealer.hand.cards
+    end
+  end
 end
 
 get '/' do
@@ -72,11 +90,11 @@ post '/new_player' do
 end
 
 get '/game' do
-
-  # @bj = Blackjack.new(3, session[:player_name])
-  @deck = Deck.new(3)
-  @player = Player.new(session[:player_name])
-  @dealer = Dealer.new
+  @bj = Blackjack.new(3, session[:player_name])
+  #@deck = Deck.new(3)
+  #@player = Player.new(session[:player_name])
+  #@dealer = Dealer.new
+  restore
 
   @deck.hit(@player)
   @deck.hit(@player)
@@ -84,4 +102,16 @@ get '/game' do
   @deck.hit(@dealer)
 
   erb :game
+  #binding.pry
 end
+
+post '/game/player/hit' do
+  #@deck.hit(@player)
+  erb :game
+end
+
+post '/game/player/stay' do
+  # turn to dealer
+  erb :game
+end
+

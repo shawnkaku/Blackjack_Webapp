@@ -10,7 +10,7 @@ class Blackjack
     @deck = Deck.new(i_deck)
     @player = Player.new(s_player)
     @dealer = Dealer.new
-    # @arr_p = Array.new
+    #@arr_p = Array.new
   end
 
   # def init_new
