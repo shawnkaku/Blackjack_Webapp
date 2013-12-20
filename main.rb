@@ -49,30 +49,36 @@ helpers do
     "<img src='/images/cards/#{suit}_#{value}.jpg' class='card_image'>"
   end
 
+  before do
+    restore
+  end
+
   def reset_all
     session[:game] = nil
   end
 
   def restore
     if session[:game]
-      #@bj = Blackjack.new(3, session[:player_name])
-
       @game = session[:game]
-      @players = @game.players
+      #@game = Blackjack.new(3, params[:player_name])
+      @player = @game.player
       @dealer = @game.dealer
       @deck = @game.deck
-      #@dealer_cards = @dealer.hand.cards
     end
+  end
+
+  def set_game
+    session[:game] = @game
   end
 end
 
 get '/' do
-  if session[:player_name]
+  #if session[:game] != nil
+  if @game != nil
     redirect '/game'
   else
     redirect '/new_player'
   end
-
 end
 
 get '/new_player' do
@@ -85,16 +91,13 @@ post '/new_player' do
     halt erb(:new_player)
   end
 
-  session[:player_name] = params[:player_name]
+  @game = Blackjack.new(3, params[:player_name])
+  set_game
+  restore
   redirect '/game'
 end
 
 get '/game' do
-  @bj = Blackjack.new(3, session[:player_name])
-  #@deck = Deck.new(3)
-  #@player = Player.new(session[:player_name])
-  #@dealer = Dealer.new
-  restore
 
   @deck.hit(@player)
   @deck.hit(@player)
@@ -106,12 +109,22 @@ get '/game' do
 end
 
 post '/game/player/hit' do
-  #@deck.hit(@player)
+  @deck.hit(@player)
   erb :game
 end
 
 post '/game/player/stay' do
   # turn to dealer
   erb :game
+end
+
+get '/game_over' do
+  reset_all
+  erb :game_over
+end
+
+get '/start_over' do
+  reset_all
+  redirect '/'
 end
 
