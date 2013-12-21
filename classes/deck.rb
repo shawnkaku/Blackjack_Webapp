@@ -16,24 +16,12 @@ class Deck
     scramble!
   end
 
-  def init_new(player_obj1, player_obj2)
-    hit(player_obj1, true)
-    hit(player_obj2, false)
-    @bust = false
-  end
-
   def scramble!
     @cards.shuffle!
   end
 
   def deal
     @cards.pop
-  end
-
-  def choice
-    puts "========= Choice Your Action ========="
-    puts "1) for bit, 2) for stay, 3) for exit"
-    return gets.chomp.to_i
   end
 
   def winner(arr_player)
@@ -49,41 +37,20 @@ class Deck
     arr_tmp_name[arr_tmp_value.index(arr_tmp_value.max)]
   end
 
-  def player_status(player_obj)
-    player_obj.hold_cards.each do |ca|
-      puts "#{player_obj.name}\'s cards is #{ca.suit}, #{ca.face_value}"
-    end
-    puts "#{player_obj.name}\'s point is #{calculate_point(player_obj.hold_cards)}."
-    puts "-------------------------------"
-  end
-
-  def is_bust(points)
-    if points > @max_point
-      return true
-    else
-      return false
-    end
-  end
+  # def is_bust(points)
+  #   if points > @max_point
+  #     return true
+  #   else
+  #     return false
+  #   end
+  # end
 
   def hit(player_obj)
     player_obj.hit(@cards.pop)
-    # if (is_show)
-    #   player_status(player_obj)
-    # end
-    # return is_bust(calculate_point(player_obj.hold_cards))
   end
 
   def deal
     @cards.pop
-  end
-
-  def stay(player_obj)
-    puts "#{player_obj.name} has finished this round."
-  end
-
-  def quit(player_obj)
-    puts "Thanks for your join the game. Bye!"
-    exit
   end
 
   def calculate_point(arr_card)

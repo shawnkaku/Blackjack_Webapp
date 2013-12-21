@@ -1,20 +1,27 @@
 <h1>Blackjack</h1>
+<% if session[:turn_over] %>
+  <p><a href="/new_turn" class="btn btn-small btn-primary disabled">Start a new turn.</a></p>
+<% end %>
 <div class="well">
   <h4>
     <%=  "#{@player.name}'s cards:" %><br/>
-    
+
   </h4>
   <% @player.hold_cards.each do |e| %>
     <%= "#{card_img(e)}" %>
   <% end %>
   <br />
   What would you like to do?<%= "#{@player.name} has #{calculate_point(@player.hold_cards)}" %>
-  <form action='/game/player/hit' method='post'>
-    <input type='submit' class='btn' value='Hit' />
-  </form>
-  <form action='/game/player/stay' method='post'>
-    <input type='submit' class='btn' value='Stay' />
-  </form>
+  <% if !session[:turn_over] %>
+    <% if session[:player_turn] %>
+      <form action='/game/player/hit' method='post'>
+        <input type='submit' class='btn btn-primary' value='Hit' />
+      </form>
+      <form action='/game/player/stay' method='post'>
+        <input type='submit' class='btn' value='Stay' />
+      </form>
+    <% end %>
+  <% end %>
 </div>
 <br/>
 <div class="well">
@@ -24,6 +31,13 @@
   </h4>
   <% @dealer.hold_cards.each do |e| %>
     <%= "#{card_img(e)}" %>
+  <% end %>
+  <% if !session[:turn_over] %>
+  <% if is_dealer_turn %>
+    <form action='/game/dealer/hit' method='post'>
+      <input type='submit' class='btn btn-small btn-info' value='Turn to Dealer Hit!' />
+    </form>
+  <% end %>
   <% end %>
 </div>
 
