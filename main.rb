@@ -28,7 +28,7 @@ helpers do
     points
   end
 
-  def card_img(card)
+  def card_img(card, show=true)
     suit = case card.suit
       when 'H' then 'hearts'
       when 'D' then 'diamonds'
@@ -46,7 +46,11 @@ helpers do
       end
     end
 
-    "<img src='/images/cards/#{suit}_#{value}.jpg' class='card_image'>"
+    if show
+      "<img src='/images/cards/#{suit}_#{value}.jpg' class='card_image'>"
+    else
+      "<img src='/images/cards/cover.jpg' class='card_image'>"
+    end
   end
 
   def is_bust(player_obj)
@@ -60,7 +64,8 @@ helpers do
 
   def is_dealer_turn
     dealer_point = calculate_point(@dealer.hold_cards)
-    if (!session[:player_turn]) && dealer_point < DEALER_LIMIT
+    player_point = calculate_point(@player.hold_cards)
+    if (!session[:player_turn]) && (dealer_point < DEALER_LIMIT or dealer_point < player_point)
       if is_bust(@dealer)
         false
       else
@@ -77,10 +82,11 @@ helpers do
 
   def check_dealer
     dealer_point = calculate_point(@dealer.hold_cards)
+    player_point = calculate_point(@player.hold_cards)
     if is_bust(@dealer)
       @success = "You win! Dealer look like Bust."
       session[:turn_over] = true
-    elsif dealer_point >= DEALER_LIMIT
+    elsif (dealer_point >= DEALER_LIMIT && dealer_point >= player_point)
       who_win
     end
   end
