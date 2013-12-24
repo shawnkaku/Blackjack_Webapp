@@ -1,0 +1,40 @@
+2013-12-24T02:21:32.607914+00:00 heroku[api]: Enable Logplex by shawnkuo67@gmail.com
+2013-12-24T02:21:32.641227+00:00 heroku[api]: Release v2 created by shawnkuo67@gmail.com
+2013-12-24T02:24:57.824851+00:00 heroku[router]: at=info code= desc="Blank app" method=GET path=/favicon.ico host=pure-thicket-7603.herokuapp.com fwd="60.251.224.183" dyno= connect= service= status=502 bytes=
+2013-12-24T03:07:50+00:00 heroku[slug-compiler]: Slug compilation started
+2013-12-24T03:08:30.055385+00:00 heroku[api]: Scale to web=1 by shawnkuo67@gmail.com
+2013-12-24T03:08:30.089501+00:00 heroku[api]: Deploy f084089 by shawnkuo67@gmail.com
+2013-12-24T03:08:30.124526+00:00 heroku[api]: Release v3 created by shawnkuo67@gmail.com
+2013-12-24T03:08:30+00:00 heroku[slug-compiler]: Slug compilation finished
+2013-12-24T03:08:32.902589+00:00 heroku[web.1]: Starting process with command `bundle exec thin start -R config.ru -e $RACK_ENV -p 23348`
+2013-12-24T03:08:33.656624+00:00 heroku[web.1]: Starting process with command `bundle exec thin start -R config.ru -e $RACK_ENV -p 6113`
+2013-12-24T03:08:35.065459+00:00 app[web.1]: ruby: symbol lookup error: /app/vendor/bundle/ruby/2.0.0/gems/eventmachine-1.0.0/lib/rubyeventmachine.so: undefined symbol: rb_enable_interrupt
+2013-12-24T03:08:36.414290+00:00 heroku[web.1]: Process exited with status 127
+2013-12-24T03:08:36.865086+00:00 app[web.1]: ruby: symbol lookup error: /app/vendor/bundle/ruby/2.0.0/gems/eventmachine-1.0.0/lib/rubyeventmachine.so: undefined symbol: rb_enable_interrupt
+2013-12-24T03:08:38.200340+00:00 heroku[web.1]: State changed from starting to crashed
+2013-12-24T03:08:38.201834+00:00 heroku[web.1]: State changed from crashed to starting
+2013-12-24T03:08:38.185830+00:00 heroku[web.1]: Process exited with status 127
+2013-12-24T03:08:40.994183+00:00 heroku[web.1]: Starting process with command `bundle exec thin start -R config.ru -e $RACK_ENV -p 29257`
+2013-12-24T03:08:43.394918+00:00 app[web.1]: ruby: symbol lookup error: /app/vendor/bundle/ruby/2.0.0/gems/eventmachine-1.0.0/lib/rubyeventmachine.so: undefined symbol: rb_enable_interrupt
+2013-12-24T03:08:44.573273+00:00 heroku[web.1]: Process exited with status 127
+2013-12-24T03:08:44.590322+00:00 heroku[web.1]: State changed from starting to crashed
+2013-12-24T03:10:10.023366+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path=/ host=pure-thicket-7603.herokuapp.com fwd="60.251.224.183" dyno= connect= service= status=503 bytes=
+2013-12-24T03:10:10.459022+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path=/favicon.ico host=pure-thicket-7603.herokuapp.com fwd="60.251.224.183" dyno= connect= service= status=503 bytes=
+2013-12-24T03:49:51.522578+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path=/ host=pure-thicket-7603.herokuapp.com fwd="60.251.224.183" dyno= connect= service= status=503 bytes=
+2013-12-24T03:49:51.816162+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path=/favicon.ico host=pure-thicket-7603.herokuapp.com fwd="60.251.224.183" dyno= connect= service= status=503 bytes=
+2013-12-24T03:51:40.099728+00:00 heroku[web.1]: State changed from crashed to starting
+2013-12-24T03:51:43.409107+00:00 heroku[web.1]: Starting process with command `bundle exec thin start -R config.ru -e $RACK_ENV -p 30382`
+2013-12-24T03:51:45.790102+00:00 app[web.1]: ruby: symbol lookup error: /app/vendor/bundle/ruby/2.0.0/gems/eventmachine-1.0.0/lib/rubyeventmachine.so: undefined symbol: rb_enable_interrupt
+2013-12-24T03:51:47.509978+00:00 heroku[web.1]: Process exited with status 127
+2013-12-24T03:51:47.516432+00:00 heroku[web.1]: State changed from starting to crashed
+2013-12-24T04:03:36.746261+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path=/ host=pure-thicket-7603.herokuapp.com fwd="69.45.19.30" dyno= connect= service= status=503 bytes=
+2013-12-24T04:03:37.822237+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path=/favicon.ico host=pure-thicket-7603.herokuapp.com fwd="69.45.19.30" dyno= connect= service= status=503 bytes=
+2013-12-24T04:18:37.962095+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path=/favicon.ico host=pure-thicket-7603.herokuapp.com fwd="69.45.19.30" dyno= connect= service= status=503 bytes=
+2013-12-24T04:18:37.595788+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path=/ host=pure-thicket-7603.herokuapp.com fwd="69.45.19.30" dyno= connect= service= status=503 bytes=
+2013-12-24T04:37:36.542864+00:00 heroku[web.1]: State changed from crashed to starting
+2013-12-24T04:37:39.345158+00:00 heroku[web.1]: Starting process with command `bundle exec thin start -R config.ru -e $RACK_ENV -p 31691`
+2013-12-24T04:37:41.946629+00:00 app[web.1]: ruby: symbol lookup error: /app/vendor/bundle/ruby/2.0.0/gems/eventmachine-1.0.0/lib/rubyeventmachine.so: undefined symbol: rb_enable_interrupt
+2013-12-24T04:37:41.967594+00:00 heroku[web.1]: State changed from starting to up
+2013-12-24T04:37:43.284932+00:00 heroku[web.1]: Process exited with status 127
+2013-12-24T04:37:43.276579+00:00 heroku[web.1]: State changed from up to crashed
+2013-12-24T04:40:28.650498+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path=/favicon.ico host=pure-thicket-7603.herokuapp.com fwd="69.45.19.30" dyno= connect= service= status=503 bytes=
