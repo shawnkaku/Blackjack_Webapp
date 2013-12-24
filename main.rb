@@ -65,7 +65,7 @@ helpers do
   def is_dealer_turn
     dealer_point = calculate_point(@dealer.hold_cards)
     player_point = calculate_point(@player.hold_cards)
-    if (!session[:player_turn]) && (dealer_point < DEALER_LIMIT or dealer_point < player_point)
+    if (!session[:player_turn]) && (dealer_point < DEALER_LIMIT || dealer_point < player_point)
       if is_bust(@dealer)
         false
       else

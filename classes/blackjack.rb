@@ -17,8 +17,8 @@ class Blackjack
 
   def init_new
     @arr_p.clear
-    @arr_p << @player
     @arr_p << @dealer
+    @arr_p << @player
   end
 
 end
