@@ -1,0 +1,6 @@
+<h3><%= "#{@player.name} has #{@player.money}." %><br/>How many do you want to bet?</h3>
+<form action="/bet" method="post">
+  <input type="text" name="bet"/>
+  <br/>
+  <input type="submit" class="btn btn-primary" />
+</form>

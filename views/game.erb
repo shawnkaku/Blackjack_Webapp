@@ -5,7 +5,9 @@
 <div class="well">
   <h4>
     <%=  "#{@player.name}'s cards:" %><br/>
-
+    <% if !session[:turn_over] %>
+      <%=  "#{@player.name} has #{@player.money}. Bet #{@player.turn_bet} in this turn." %>
+    <% end %>
   </h4>
   <% @player.hold_cards.each do |e| %>
     <%= "#{card_img(e)}" %>
