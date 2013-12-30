@@ -84,7 +84,7 @@ helpers do
     dealer_point = calculate_point(@dealer.hold_cards)
     player_point = calculate_point(@player.hold_cards)
     if is_bust(@dealer)
-      @success = "You win! Dealer look like Bust. You win $#{@player.win_bet.to_s}!"
+      @success = "You win! Dealer look like Bust. You won $#{@player.win_bet.to_s}!"
       @player.win
       session[:turn_over] = true
     elsif (dealer_point >= DEALER_LIMIT && dealer_point >= player_point)
@@ -96,10 +96,10 @@ helpers do
     session[:turn_over] = true
     winner = @deck.winner(@arr_p)
     if winner == "Dealer"
-      @error = "#{winner} won this turn. You loss $#{@player.turn_bet.to_s}!"
+      @error = "#{winner} won this turn. You lost $#{@player.turn_bet.to_s}!"
       @player.loss
     elsif winner != nil
-      @success = "The winner is #{winner}. You win $#{@player.win_bet.to_s}!"
+      @success = "The winner is #{winner}. You won $#{@player.win_bet.to_s}!"
       @player.win
     else
       @info = "Tie!"
@@ -180,7 +180,10 @@ post '/bet' do
   if params[:bet].empty?
     @error = "Bet is required!"
     halt erb(:bet)
-  elsif @player.money < params[:bet].to_i
+  elsif params[:bet].to_i <= 0
+    @error = "Bet must be bigger than 0!"
+    halt erb(:bet)
+ elsif @player.money < params[:bet].to_i
     @error = "Not enough money!"
     halt erb(:bet)
   end
@@ -201,7 +204,7 @@ end
 post '/game/player/hit' do
   @deck.hit(@player)
   if is_bust(@player)
-    @error = "Player look like Bust. Player loss #{@player.turn_bet}."
+    @error = "Player look like Bust. Player lost #{@player.turn_bet}."
     @player.loss
     session[:player_turn] = false
     session[:turn_over] = true
