@@ -1,6 +1,6 @@
 <h1>Blackjack</h1>
 <% if session[:turn_over] %>
-  <p><a href="/new_turn" class="btn btn-small btn-primary disabled">Start a new turn.</a></p>
+  <p><a href="/new_turn" class="btn btn-small btn-primary disabled">Start a new round.</a></p>
 <% end %>
 <div class="well" id='player_area'>
   <h4>
@@ -13,8 +13,7 @@
     <%= "#{card_img(e)}" %>
   <% end %>
   <br />
-  What would you like to do?<%= "#{@player.name} has #{calculate_point(@player.hold_cards)}" %>
-  <a id='player_color' href="#">change color</a>
+  What would you like to do?<%= "#{@player.name} has #{calculate_point(@player.hold_cards)}." %>
   <% if !session[:turn_over] %>
     <% if session[:player_turn] %>
       <form action='/game/player/hit' method='post'>
