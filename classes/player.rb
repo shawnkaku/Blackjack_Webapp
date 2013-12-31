@@ -25,7 +25,7 @@ class Player
   end
 
   def win
-    self.money += self.turn_bet * 1.5
+    self.money += (self.turn_bet * 1.5).to_i
     self.turn_bet = 0
   end
 
@@ -39,7 +39,7 @@ class Player
   end
 
   def win_bet
-    self.turn_bet * 1.5
+    (self.turn_bet * 1.5).to_i
   end
 
   def bet(bet_money)

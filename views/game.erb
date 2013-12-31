@@ -1,3 +1,13 @@
+<div id="game">
+  <%if @error %>
+    <div class="alert alert-error"><%=@error%></div>
+  <% end %>
+  <%if @success %>
+    <div class="alert alert-success"><%=@success%></div>
+  <% end %>
+  <%if @info %>
+    <div class="alert alert-info"><%=@info%></div>
+  <% end %>
 <h1>Blackjack</h1>
 <% if session[:turn_over] %>
   <p><a href="/new_turn" class="btn btn-small btn-primary disabled">Start a new round.</a></p>
@@ -16,10 +26,10 @@
   What would you like to do?<%= "#{@player.name} has #{calculate_point(@player.hold_cards)}." %>
   <% if !session[:turn_over] %>
     <% if session[:player_turn] %>
-      <form action='/game/player/hit' method='post'>
+      <form id="player_hit_form" action='/game/player/hit' method='post'>
         <input type='submit' class='btn btn-primary' value='Hit' />
       </form>
-      <form action='/game/player/stay' method='post'>
+      <form id="player_stay_form" action='/game/player/stay' method='post'>
         <input type='submit' class='btn' value='Stay' />
       </form>
     <% end %>
@@ -37,11 +47,11 @@
   <% end %>
   <% if !session[:turn_over] %>
   <% if is_dealer_turn %>
-    <form action='/game/dealer/hit' method='post'>
+    <form id="dealer_hit_form" action='/game/dealer/hit' method='post'>
       <input type='submit' class='btn btn-small btn-info' value='Turn to Dealer Hit!' />
     </form>
   <% end %>
   <% end %>
 </div>
-
+</div>
 
